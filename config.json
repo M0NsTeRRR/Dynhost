@@ -1,0 +1,15 @@
+{
+    "delay": 1800,
+    "dyndns": [
+        { 
+            "hostname": "",
+            "username": "", 
+            "password": "" 
+        },
+        { 
+            "hostname": "",
+            "username": "", 
+            "password": "" 
+        }
+    ]
+}
