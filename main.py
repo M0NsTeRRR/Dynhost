@@ -36,6 +36,7 @@
 # ----------------------------------------------------------------------------
 
 import logging
+from os import environ
 from json import load
 from sys import exit
 from datetime import datetime
@@ -78,16 +79,34 @@ def updateDyndns(hostname, ip, username, password):
     else:
         raise Exception('An error occured when tried to update DynDNS HTTP error : {HTTP_CODE}, HTTP message : {HTTP_MESSAGE}'.format(HTTP_CODE=r.status_code, HTTP_MESSAGE=r.text))
 
-# get DynDns configuration
+# get DynDns configuration from environment variables
+try:
+    config = {
+        "delay": environ.get("DYNHOST_DELAY", 1800),
+        "dyndns": [
+            { 
+                "hostname": environ.get("DYNHOST_HOSTANAME", ""),
+                "username": environ.get("DYNHOST_USERNAME", ""), 
+                "password": environ.get("DYNHOST_PASSWORD", "") 
+            }
+        ]
+    }
+except Exception as e:
+    pass
+
+# get DynDns configuration from file
 try:
     with open('config.json') as json_data_file:
-        config = load(json_data_file)
+        config.update(load(json_data_file))
+except Exception as e:
+    pass
 
+try:
     if "delay" not in config or 60 <= config["delay"] >= 3600:
         raise Exception("config.json not filled properly")
     for dyndns in config['dyndns']:
         for parameter in ["hostname", "username", "password"]:
-            if parameter not in dyndns or not isinstance(dyndns[parameter], str):
+            if parameter not in dyndns or not isinstance(dyndns[parameter], str) or len(dyndns[parameter]) == 0:
                 raise Exception("config.json not filled properly")
 except Exception as e:
     logger.error("{error}".format(error=e))
