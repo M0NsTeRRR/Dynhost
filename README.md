@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/00b415afa9d64866a9bb0781499257c9)](https://www.codacy.com/app/M0NsTeRRR/Dynhost?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=M0NsTeRRR/Dynhost&amp;utm_campaign=Badge_Grade)
 ![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/dynhost?style=flat-square)
 ![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/dynhost?style=flat-square)
 

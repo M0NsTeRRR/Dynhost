@@ -38,8 +38,7 @@
 import logging
 from os import environ
 from json import load
-from sys import exit
-from datetime import datetime
+from sys import sys_exit
 from time import sleep
 from requests import get
 
@@ -66,7 +65,7 @@ def getIP(url):
     if r.status_code == 200:
         return r.text.strip()
     else:
-        raise Exception('Can\'t get IP from : {url}'.format(url))
+        raise Exception('Can\'t get IP from : {url}'.format(url=url))
 
 def updateDyndns(hostname, ip, username, password):
     """
@@ -83,10 +82,10 @@ def updateDyndns(hostname, ip, username, password):
 config = {
     "delay": int(environ.get("DYNHOST_DELAY", "1800")),
     "dyndns": [
-        { 
+        {
             "hostname": environ.get("DYNHOST_HOSTANAME", ""),
-            "username": environ.get("DYNHOST_USERNAME", ""), 
-            "password": environ.get("DYNHOST_PASSWORD", "") 
+            "username": environ.get("DYNHOST_USERNAME", ""),
+            "password": environ.get("DYNHOST_PASSWORD", "")
         }
     ]
 }
@@ -95,8 +94,11 @@ config = {
 try:
     with open('config.json') as json_data_file:
         config.update(load(json_data_file))
-except Exception as e:
+except FileNotFoundError:
     pass
+except Exception as e:
+    logger.error("{error}".format(error=e))
+    sys_exit(1)
 
 try:
     if "delay" not in config or 60 <= config["delay"] >= 3600:
@@ -107,7 +109,7 @@ try:
                 raise Exception("config.json not filled properly")
 except Exception as e:
     logger.error("{error}".format(error=e))
-    exit(1)
+    sys_exit(1)
 
 logger.info('Dynhost started')
 
