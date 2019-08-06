@@ -38,7 +38,7 @@
 import logging
 from os import environ
 from json import load
-from sys import sys_exit
+from sys import exit as sys_exit
 from time import sleep
 from requests import get
 

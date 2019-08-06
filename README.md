@@ -1,6 +1,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/00b415afa9d64866a9bb0781499257c9)](https://www.codacy.com/app/M0NsTeRRR/Dynhost?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=M0NsTeRRR/Dynhost&amp;utm_campaign=Badge_Grade)
-![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/dynhost?style=flat-square)
-![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/dynhost?style=flat-square)
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/dynhost?style=flat-square)](https://hub.docker.com/r/monsterrr/dynhost)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/dynhost?style=flat-square)](https://hub.docker.com/r/monsterrr/dynhost)
 
 The goal of this project is to update your DynDns entries on OVH. It can updates multiple subdomains.
 
@@ -11,7 +11,6 @@ The goal of this project is to update your DynDns entries on OVH. It can updates
 
 #### Docker
 - Docker CE
-- Docker-compose
 
 ## Install
 
@@ -25,13 +24,9 @@ Start the script `python main.py`
 ### Docker
 Docker version support only one update of DynDns (start many containers to fix the problem)
 
-Fill environment variables on docker-compose.yml : 
-- DYNHOST_DELAY
-- DYNHOST_HOSTANAME
-- DYNHOST_USERNAME
-- DYNHOST_PASSWORD
+Fill environment variables
 
-Start the container `docker-compose up`
+`docker run -d --restart=always -e "DYNHOST_DELAY=" -e "DYNHOST_HOSTANAME=" -e "DYNHOST_USERNAME=" -e "DYNHOST_PASSWORD=" monsterrr/dynhost:latest`
 
 # Licence
 
