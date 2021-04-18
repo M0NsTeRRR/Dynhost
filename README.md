@@ -1,6 +1,4 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/00b415afa9d64866a9bb0781499257c9)](https://www.codacy.com/app/M0NsTeRRR/Dynhost?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=M0NsTeRRR/Dynhost&amp;utm_campaign=Badge_Grade)
-[![Docker Automated build](https://img.shields.io/docker/cloud/automated/monsterrr/dynhost?style=flat-square)](https://hub.docker.com/r/monsterrr/dynhost)
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/monsterrr/dynhost?style=flat-square)](https://hub.docker.com/r/monsterrr/dynhost)
 
 The goal of this project is to update your DynDns entries on OVH. It can updates multiple subdomains.
 
@@ -40,4 +38,4 @@ Copyright © Ludovic Ortega, 2019
 
 Contributor(s):
 
--Ortega Ludovic - mastership@hotmail.fr
+-Ortega Ludovic - ludovic.ortega@adminafk.fr
